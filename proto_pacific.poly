@@ -33,4 +33,4 @@
 
 # Part 4 - region list
 1
-0  500.0e3  500.0e3   50.0e3 0 2e16   # Left host block
+0  500.0e3  500.0e3   50.0e3 0 1e15   # Left host block
