@@ -1,10 +1,14 @@
 # DynEarthSol output
+*.save.*
+*.chkpt.*
+*.vtu
+*.vtp
 *.vtkhdf
 *.info
 *.log
 *.manifest
 *.chkpt
 *.bin
-# plots and scratch from the analysis scripts
+# plots and scratch from the analysis scripts (domain.png is tracked anyway)
 *.png
 probe/remesh.txt
