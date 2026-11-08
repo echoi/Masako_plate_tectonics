@@ -1,0 +1,10 @@
+# DynEarthSol output
+*.vtkhdf
+*.info
+*.log
+*.manifest
+*.chkpt
+*.bin
+# plots and scratch from the analysis scripts
+*.png
+probe/remesh.txt
