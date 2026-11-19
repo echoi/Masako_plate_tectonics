@@ -32,8 +32,15 @@ issues found so far. This file holds working rules and current state.
 
 ## Current state (update as it changes)
 
-- fff20 and bh20 (3 Myr, 20 km) were relaunched from t = 0 on 2026-11-17 on the laptop.
-  About 2.75 h of wall time per 0.1 Myr frame with 2 threads each. The first attempt,
-  stopped on 2026-11-10, is in `<run>/stopped_2026-11-10/`.
-- 2026-11-19: moving the work to the workstation nefertiti.ceri.memphis.edu; see
-  `MIGRATE.md`.
+- The work now lives on the workstation nefertiti.ceri.memphis.edu (128 cores), in
+  `~/projects/Masako_plate_tectonics`; the laptop copy is no longer running anything.
+  `MIGRATE.md` records the move.
+- DynEarthSol for these runs on nefertiti: `~/opt/DynEarthSol-68cc2a0/dynearthsol3d`
+  (mmg configured with `-DUSE_SCOTCH=OFF`; see `MIGRATE.md`). Leave
+  `~/opt/DynEarthSol` there alone; it is a separate checkout.
+- fff20 and bh20 (3 Myr, 20 km): started on the laptop on 2026-11-17, restarted on
+  nefertiti on 2026-11-19 from frames 5 and 4 (`<run>.restart<N>.cfg`, 16 threads each,
+  about 16 min per 0.1 Myr frame, about 7 h to finish). The first attempt, stopped on
+  2026-11-10, is in `<run>/stopped_2026-11-10/`.
+- To restart again from frame N, copy `<run>.cfg` to `<run>.restart<N>.cfg` and add the
+  three restart lines; keep the original `.cfg` unchanged.

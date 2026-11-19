@@ -55,10 +55,30 @@ Python for the plots: numpy, h5py, matplotlib, scipy (conda or pip).
 
 ## Status
 
-- [ ] SSH access from the laptop
-- [ ] Repo cloned on the workstation
-- [ ] DynEarthSol 68cc2a0 built and checked
-- [ ] Laptop runs stopped at fff20 frame ?, bh20 frame ?
-- [ ] Run directories copied
-- [ ] Runs restarted on the workstation
-- [ ] Claude memory copied
+- [x] SSH access from the laptop (2026-11-19)
+- [x] Repo on the workstation: the April clone at `~/projects/Masako_plate_tectonics`,
+      fast-forwarded to 88b4bc3
+- [x] DynEarthSol 68cc2a0 built in `~/opt/DynEarthSol-68cc2a0`. The workstation has
+      SCOTCH, which mmg picks up and DynEarthSol does not link, so mmg was configured
+      with `-DUSE_SCOTCH=OFF` (as on the laptop) before `make`. fff20 frame 0 is
+      bit-identical to the laptop's (only `walltime_sec` differs).
+- [x] Laptop runs stopped (2026-11-19 11:05) at fff20 frame 5, bh20 frame 4
+- [x] Run directories copied (674 MB)
+- [x] Runs restarted on the workstation (2026-11-19 11:09) with 16 threads each, from
+      `fff20/fff20.restart5.cfg` and `bh20/bh20.restart4.cfg` (the original `.cfg` plus
+      the three restart lines); logs in `<run>.restart<N>.log`
+- [x] Claude memory copied (same path, so same slug)
+- [x] `probe/` and `corner/` outputs copied (2.4 GB)
+
+## Speed on the workstation
+
+128 cores. Per-step cost for fff20 at 20 km (laptop: about 44 ms with 2 threads):
+
+| threads | ms/step |
+|---------|---------|
+| 2       | 26      |
+| 8       | 7.6     |
+| 16      | 4.2     |
+
+At 16 threads a 0.1 Myr frame (about 230,000 steps) takes about 16 min instead of
+2.75 h, so a full 3 Myr run takes about 8 h.
