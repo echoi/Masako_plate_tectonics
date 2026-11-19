@@ -52,6 +52,7 @@ p.add_argument("--surf_diff", type=float, default=1e-3,
                help="surface diffusivity (m^2/s); flattens the spikes where two wall velocities meet at a corner")
 p.add_argument("--max_time_yr", type=float, default=10e6)
 p.add_argument("--out_dt_yr", type=float, default=0.5e6)
+p.add_argument("--chkpt_every", type=int, default=1, help="write a checkpoint every N output frames")
 p.add_argument("--max_steps", type=int, default=0, help="0 = unlimited")
 args = p.parse_args()
 
@@ -191,6 +192,7 @@ cfg = f"""# FFF triple junction (Boschman & van Hinsbergen 2016, Fig. 3B-C), geo
 modelname = {args.name}
 max_time_in_yr = {args.max_time_yr:g}
 output_time_interval_in_yr = {args.out_dt_yr:g}
+checkpoint_frame_interval = {args.chkpt_every}
 {"max_steps = %d" % args.max_steps if args.max_steps else "#max_steps"}
 is_outputting_averaged_fields = no
 

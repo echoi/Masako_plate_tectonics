@@ -86,10 +86,16 @@ layout (c1: 100 kyr, no surface diffusion; c2: 30 kyr with it).
 
 | dir   | geom | res   | time  | notes |
 |-------|------|-------|-------|-------|
-| fff20 | sym  | 20 km | 3 Myr | 30 Myr plates, 150 km buffers, surf_diff 1e-3, started 2026-11-08 |
+| fff20 | sym  | 20 km | 3 Myr | 30 Myr plates, 150 km buffers, surf_diff 1e-3, relaunched 2026-11-17 |
 | bh20  | bh16 | 20 km | 3 Myr | same |
 
-Both run at the same time with `OMP_NUM_THREADS=2`; dt is about 0.7 yr. 3 Myr rather
+Both run at the same time with `OMP_NUM_THREADS=2`; dt is about 0.7 yr, and one 0.1 Myr
+frame takes about 2 h of wall time. The first attempts (started 2026-11-08) were stopped
+on 2026-11-10 at 0.7 Myr (fff20) and 0.6 Myr (bh20) because of repeated interruptions;
+their outputs and plots are in `<run>/stopped_2026-11-10/`. They had no checkpoint after
+frame 0, so the relaunch starts from t = 0 with a checkpoint at every frame
+(`--chkpt_every`, default 1). To resume after an interruption, add
+`restarting_from_modelname` and `restarting_from_frame` to `[sim]`. 3 Myr rather
 than 5 because the junction is only 250 km from the north and west walls.
 
 ## DynEarthSol issues found on the way (not fixed here)
